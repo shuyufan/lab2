@@ -204,14 +204,16 @@ Remember to set the chunk option `error=TRUE` so your document will knit.
 
 ```{r,error=TRUE}
 qpareto <- function(p, alpha, x0,lower.tail=TRUE){
-  stopifnot(p>=0 & p<= 1 & alpha > 1 & x0>0)
-  if (lower.tail==FALSE){
-    p = 1 - p
-    return(qpareto_1(p, alpha, x0))
+  if(p>=0 & p<= 1 & alpha > 1 & x0>0) {
+      if (lower.tail==FALSE){
+       p = 1 - p
+       return(qpareto_1(p, alpha, x0))
+       }
+       else return(qpareto_1(p,alpha,x0))
   }
-  else
-    return(qpareto_1(p,alpha,x0))
+  else return("error: conditions wrong")
 }
+
 
 
 ```
