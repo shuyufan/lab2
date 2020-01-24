@@ -38,7 +38,7 @@ After you write your function, test it with the following function calls.
 What do you notice happens? Why is this happening? **Be sure to remove the**
 **chunk option `eval=FALSE` to see the output when you knit your document.**
 
-```{r e-test, eval=FALSE}
+```{r e-test}
 limit_e(100)
 limit_e(1000000)
 limit_e(c(1, 1000000, 100000000000))
@@ -133,7 +133,7 @@ qpareto_1 <- function(p, alpha, x0){
 
 ```
 
-```{r qpareto_1, eval=FALSE, results='hold'}
+```{r qpareto_1, results='hold'}
 qpareto_1(p = 0.5, alpha = 3.5, x0 = 1)
 qpareto_1(p = 0.5, alpha = 2.34, x0 = 6e8)
 qpareto_1(p = 0.92, alpha = 2.5, x0 = 1e6)
@@ -169,7 +169,7 @@ qpareto_2 <- function(p, alpha, x0,lower.tail=TRUE){
 ```
 
 
-```{r qpareto_2-examples, eval = FALSE, results='hold'}
+```{r qpareto_2-examples, results='hold'}
 qpareto_2(p = 0.5, alpha = 3.5, x0 = 1)
 qpareto_2(p = 0.08, alpha = 2.5, x0 = 1e6, lower.tail = FALSE)
 ```
@@ -217,7 +217,7 @@ qpareto <- function(p, alpha, x0,lower.tail=TRUE){
 ```
 
 
-```{r qpareto-examples, eval=FALSE}
+```{r qpareto-examples}
 qpareto(p = 0.5, alpha = 3.5, x0 = 1)
 qpareto(p = 0.08, alpha = 2.5, x0 = 1e6, lower.tail = FALSE)
 qpareto(p = 1.08, alpha = 2.5, x0 = 1e6, lower.tail = FALSE)
@@ -235,7 +235,7 @@ numbers exactly.
 
 For your mind to be blown, run the following examples.
 
-```{r cpu-arithmetic, eval=FALSE}
+```{r cpu-arithmetic}
 # example 1
 0.2 == 0.6 / 3
 
@@ -249,7 +249,7 @@ point3 == 0.3
 To work around these issues, use `all.equal()` for checking the equality of
 two double quantities in R.
 
-```{r cpu-arithmetic2, eval=FALSE}
+```{r cpu-arithmetic2}
 # example 1, all.equal()
 all.equal(0.2, 0.6 / 3)
 
