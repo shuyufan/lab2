@@ -1,6 +1,6 @@
 ---
 title: "Lab 2"
-author: "Shawn Santo"
+author: "Lynn Fan"
 date: "01/17/2020"
 output: 
   html_document:
@@ -28,7 +28,9 @@ $$e = \lim_{n \to \infty}\bigg(1 + \frac{1}{n}\bigg)^n.$$
 <br>
 
 ```{r limit-e-fcn}
-
+limit_e <- function(n){
+  return (1+1/n)^n
+}
 
 ```
 
@@ -123,6 +125,10 @@ Check to make sure your function returns the same answers as the three above.
 
 
 ```{r}
+qpareto_1 <- function(p, alpha, x0){
+ qp <- x0*((1-p)^-(1/(alpha-1)))
+ return(qp)
+}
 
 
 ```
@@ -151,7 +157,14 @@ appropriate quantile, i.e., `qpareto_1()` is called from inside of
 `qpareto_2()`. Test your function with the two function calls below.
 
 ```{r}
-
+qpareto_2 <- function(p, alpha, x0,lower.tail=TRUE){
+  if (lower.tail==FALSE){
+    p = 1 - p
+    return(qpareto_1(p, alpha, x0))
+  }
+  else
+    return(qpareto_1(p,alpha,x0))
+}
 
 ```
 
@@ -189,7 +202,16 @@ stop call, by including `error=TRUE` as a chunk option.
 Test your function on the five function calls below.
 Remember to set the chunk option `error=TRUE` so your document will knit.
 
-```{r}
+```{r,error=TRUE}
+qpareto <- function(p, alpha, x0,lower.tail=TRUE){
+  stopifnot(p>=0 & p<= 1 & alpha > 1 & x0>0)
+  if (lower.tail==FALSE){
+    p = 1 - p
+    return(qpareto_1(p, alpha, x0))
+  }
+  else
+    return(qpareto_1(p,alpha,x0))
+}
 
 
 ```
